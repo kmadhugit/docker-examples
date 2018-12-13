@@ -2,8 +2,8 @@ docker rm -f myapp
 docker rm -f mydb
 docker build -t myapp app
 docker build -t mydb db
-docker run -e DBPORT=3000 -p3000:3000 -idt --name mydb mydb
-docker run -e DBPORT=3000 -e DBHOST=mydb -e MYPORT=5000 -p5000:5000 -idt --name myapp --link mydb myapp
+docker run -e DBPORT=3000 -p3000:3000 -d --name mydb mydb
+docker run -e DBPORT=3000 -e DBHOST=mydb -e APPPORT=5000 -p5000:5000 -d --name myapp --link mydb myapp
 
 sleep 5
 docker logs mydb
