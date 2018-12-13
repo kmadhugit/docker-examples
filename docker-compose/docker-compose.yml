@@ -1,0 +1,21 @@
+version: '3'
+services:
+  myapp:
+    build: app
+    environment:
+    - APPPORT=5001
+    - DBPORT=4001
+    - DBHOST=mydb
+    ports:
+    - "5001:5001"
+    links:
+    - mydb
+  mydb:
+    build: db
+    environment:
+    - DBPORT=4001
+    ports:
+    - "4001:4001"
+volumes:
+  logvolume01: {}
+
